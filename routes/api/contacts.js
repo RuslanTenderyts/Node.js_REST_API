@@ -9,12 +9,12 @@ router.get('/', contactsController.listContacts);
 
 router.get("/:contactId", isValidId, contactsController.getById);
 
-router.post('/',  contactsController.addContact);
+router.post('/', validateBody(schemas.contactAddSchema), contactsController.addContact);
 
 router.delete('/:contactId', isValidId, contactsController.removeContact);
 
 router.put('/:contactId', isValidId, checkBody, validateBody(schemas.contactAddSchema), contactsController.updateContact);
 
-router.patch('/:contactId/favorite', isValidId, checkBody, validateBody(schemas.updateFavoriteSchems), contactsController.updateFavorite);
+router.patch('/:contactId/favorite', isValidId, validateBody(schemas.updateFavoriteSchems), contactsController.updateFavorite);
 
 module.exports = router;

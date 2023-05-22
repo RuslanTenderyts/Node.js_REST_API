@@ -8,7 +8,7 @@ const contactAddSchema = Joi.object({
 });
 
 const updateFavoriteSchems = Joi.object({
-    favorite: Joi.boolean().required(),
+    favorite: Joi.boolean().messages({"any.required": `missing field favorite`}).required(),
 });
 
 module.exports = {
