@@ -19,7 +19,17 @@ const userSchema = new Schema({
     avatarURL: {
       type: String,
     },
-    token: String
+    token: {
+      type: String,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
+    }
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleMongooseError);
